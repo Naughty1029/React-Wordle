@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
 
 function App() {
+  const [solution, setSolution] = useState(null);
 
-  const [solution,setSolution] = useState(null);
-
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:3001/solutions")
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         const randomNumber = Math.floor(Math.random() * json.length);
         const randomSolution = json[randomNumber];
         setSolution(randomSolution.word);
-      })
-  },[setSolution])
+      });
+  }, [setSolution]);
 
   return (
     <div className="App">
@@ -23,7 +22,7 @@ function App() {
   );
 }
 
-export default App
+export default App;
 
 /* 
 
