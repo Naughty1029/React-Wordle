@@ -1,14 +1,30 @@
 import React from "react";
 
-export default function Row({ guess, currentGuess }) {
+type Object = {
+  key: string;
+  color: string;
+};
+
+type Props = {
+  guess?: Array<undefined | Object>;
+  currentGuess?: string;
+};
+
+export const Row: React.VFC<Props> = ({ guess, currentGuess }) => {
   if (guess) {
     return (
       <div className="row past">
-        {guess.map((l, i) => (
-          <div key={i} className={l.color}>
-            {l.key}
-          </div>
-        ))}
+        {guess.map((l, i) => {
+          if (l === undefined) {
+            return "";
+          } else {
+            return (
+              <div key={i} className={l.color}>
+                {l.key}
+              </div>
+            );
+          }
+        })}
       </div>
     );
   }
@@ -39,4 +55,4 @@ export default function Row({ guess, currentGuess }) {
       <div></div>
     </div>
   );
-}
+};

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import useWordle from "../hooks/useWordle";
-import Grid from "./Grid";
-import Keypad from "./Keypad";
-import Modal from "./Modal";
+import { useWordle } from "../hooks/useWordle";
+import { Grid } from "./Grid";
+import { Keypad } from "./Keypad";
+import { Modal } from "./Modal";
 
-export default function Wordle({ solution }) {
+type Props = {
+  solution: string;
+};
+
+export const Wordle: React.VFC<Props> = ({ solution }) => {
   const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } =
     useWordle(solution);
   const [showModal, setShowModal] = useState(false);
@@ -36,4 +40,4 @@ export default function Wordle({ solution }) {
       )}
     </div>
   );
-}
+};

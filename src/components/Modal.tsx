@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function Modal({ isCorrect, turn, solution }) {
+type Props = {
+  isCorrect: boolean;
+  turn: number;
+  solution: string;
+};
+
+export const Modal: React.VFC<Props> = ({ isCorrect, turn, solution }) => {
   return (
     <div className="modal">
       {isCorrect && (
@@ -19,4 +25,4 @@ export default function Modal({ isCorrect, turn, solution }) {
       )}
     </div>
   );
-}
+};

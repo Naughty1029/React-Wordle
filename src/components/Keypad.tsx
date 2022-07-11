@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-export default function Keypad({ usedKeys }) {
-  const [letters, setLetters] = useState(null);
+type Props = {
+  usedKeys: {
+    [key: string]: string;
+  };
+};
+
+type State = {
+  key: string;
+};
+
+export const Keypad: React.VFC<Props> = ({ usedKeys }) => {
+  const [letters, setLetters] = useState<Array<State> | null>(null);
 
   useEffect(() => {
     fetch("http://localhost:3001/letters")
@@ -24,4 +34,4 @@ export default function Keypad({ usedKeys }) {
         })}
     </div>
   );
-}
+};
