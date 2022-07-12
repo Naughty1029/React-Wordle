@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { memo } from "react";
+import { useLetters } from "../hooks/useLetters";
 
 type Props = {
   usedKeys: {
@@ -6,24 +7,13 @@ type Props = {
   };
 };
 
-type State = {
-  key: string;
-};
-
-export const Keypad: React.VFC<Props> = ({ usedKeys }) => {
-  const [letters, setLetters] = useState<Array<State> | null>(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3001/letters")
-      .then((res) => res.json())
-      .then((json) => {
-        setLetters(json);
-      });
-  }, []);
+export const Keypad: React.VFC<Props> = memo(({ usedKeys }) => {
+  const { letters, status } = useLetters();
 
   return (
     <div className="keypad">
-      {letters &&
+      {status === "success" &&
+        letters &&
         letters.map((l) => {
           const color = usedKeys[l.key];
           return (
@@ -34,4 +24,4 @@ export const Keypad: React.VFC<Props> = ({ usedKeys }) => {
         })}
     </div>
   );
-};
+});

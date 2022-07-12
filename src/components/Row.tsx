@@ -1,16 +1,12 @@
-import React from "react";
-
-type Object = {
-  key: string;
-  color: string;
-};
+import React, { memo } from "react";
+import { FormattedGuess } from "@src/types/FormattedGuess";
 
 type Props = {
-  guess?: Array<undefined | Object>;
+  guess?: Array<undefined | FormattedGuess>;
   currentGuess?: string;
 };
 
-export const Row: React.VFC<Props> = ({ guess, currentGuess }) => {
+export const Row: React.VFC<Props> = memo(({ guess, currentGuess }) => {
   if (guess) {
     return (
       <div className="row past">
@@ -55,4 +51,4 @@ export const Row: React.VFC<Props> = ({ guess, currentGuess }) => {
       <div></div>
     </div>
   );
-};
+});

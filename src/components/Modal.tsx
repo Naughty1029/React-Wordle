@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type Props = {
   isCorrect: boolean;
@@ -6,7 +6,7 @@ type Props = {
   solution: string;
 };
 
-export const Modal: React.VFC<Props> = ({ isCorrect, turn, solution }) => {
+export const Modal: React.VFC<Props> = memo(({ isCorrect, turn, solution }) => {
   return (
     <div className="modal">
       {isCorrect && (
@@ -25,4 +25,4 @@ export const Modal: React.VFC<Props> = ({ isCorrect, turn, solution }) => {
       )}
     </div>
   );
-};
+});

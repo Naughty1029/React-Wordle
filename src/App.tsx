@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
+// import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { Wordle } from "./components/Wordle";
 
+const queryClient = new QueryClient();
+
 function App() {
-  const [solution, setSolution] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3001/solutions")
-      .then((res) => res.json())
-      .then((json) => {
-        const randomNumber = Math.floor(Math.random() * json.length);
-        const randomSolution = json[randomNumber];
-        setSolution(randomSolution.word);
-      });
-  }, [setSolution]);
-
   return (
-    <div className="App">
-      <h1>Wordle (Lingo)</h1>
-      {solution && <Wordle solution={solution} />}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <h1>Wordle (Lingo)</h1>
+        <Wordle />
+      </div>
+    </QueryClientProvider>
   );
 }
 

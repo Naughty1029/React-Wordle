@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-type FormattedGuess = {
-  key: string;
-  color: string;
-};
+import { FormattedGuess } from "@src/types/FormattedGuess";
 
 type UsedKeys = {
   [key: string]: string;
