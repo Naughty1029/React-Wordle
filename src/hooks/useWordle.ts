@@ -5,13 +5,17 @@ type FormattedGuess = {
   color: string;
 };
 
+type UsedKeys = {
+  [key: string]: string;
+};
+
 export const useWordle = (solution: string) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
-  const [history, setHistory] = useState([]); // each guess is a string
+  const [history, setHistory] = useState<Array<string>>([]); // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false);
-  const [usedKeys, setUsedKeys] = useState({}); //{a:'green',b:'yellow',c:'grey'}
+  const [usedKeys, setUsedKeys] = useState<UsedKeys>({}); //{a:'green',b:'yellow',c:'grey'}
 
   //past guesses
   const formatGuess = (): Array<FormattedGuess> => {
@@ -95,7 +99,7 @@ export const useWordle = (solution: string) => {
 
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
-  const handleKeyup = ({ key }) => {
+  const handleKeyup = ({ key }: { key: string }) => {
     if (key === "Enter") {
       // guessesが5以下の時のみ実行
       if (turn > 5) {
