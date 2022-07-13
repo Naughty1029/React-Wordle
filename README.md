@@ -3,7 +3,7 @@
 ![image](https://raw.githubusercontent.com/Naughty1029/React-Wordle/main/images/mainvisual.jpg)
 
 ## Overview
-We created a copy of the world's most popular game "Wordle", built with React and TypeScript.
+I created a clone of the world's most popular game "Wordle", built with React and TypeScript.
 
 ![gif](https://raw.githubusercontent.com/Naughty1029/React-Wordle/main/images/explanation.gif)
 
