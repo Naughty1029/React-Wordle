@@ -6,11 +6,7 @@ type State = {
 
 export const useLetters = () => {
   const fetchLetters = async () => {
-    let url = process.env.REACT_APP_LETTERS_API;
-
-    if (url === undefined) {
-      return;
-    }
+    let url: string = process.env.REACT_APP_LETTERS_API!;
 
     const res = await fetch(url);
     return res.json();
