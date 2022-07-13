@@ -8,7 +8,11 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <h1>Wordle (Lingo)</h1>
+        <div>
+          <h1>
+            <img src="assets/logo.png" alt="" />
+          </h1>
+        </div>
         <Wordle />
       </div>
     </QueryClientProvider>

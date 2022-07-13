@@ -6,7 +6,16 @@ type State = {
 
 export const useLetters = () => {
   const fetchLetters = async () => {
-    const res = await fetch("http://localhost:3001/letters");
+    let url = "";
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:3001/letters";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url =
+        "https://gist.githubusercontent.com/Naughty1029/66a4076fb15172b8a49eedbc5984ed50/raw/1951015e153432ed475e99c1d6b5078310cc0328/wordle_letters";
+    }
+
+    const res = await fetch(url);
     return res.json();
   };
 

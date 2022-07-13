@@ -29,7 +29,6 @@ export const Wordle: React.VFC = () => {
 
   return (
     <div>
-      <div>current guess - {currentGuess}</div>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keypad usedKeys={usedKeys} />
       {showModal && (
